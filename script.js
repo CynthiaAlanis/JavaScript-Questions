@@ -38,7 +38,7 @@ function hideElementOnEvent(){
   const hiderElement = document.getElementById('hider');
   //this checks if the page has the element
   if (hiderElement){
-  // this will hide the element when the "subscription-granted" event is fired 
+  // this will hide the element when the "subscription-granted" button is clicked on
     document.addEventListener('subscription-granted', function () {
      hiderElement.style.display='none';
     });
@@ -52,13 +52,15 @@ function goToNews(){
   const currentURL = window.location.href;
 
   //this splits the url into sections using the '/' symbol
-  const sections =currentURL.split('/');
+  const segments =currentURL.split('/');
 
   // this will loop through the sections to see if it has a number
-  for (const section of sections){
-  // this checks to see if the section has only numbers
-    if (/^\d+$/.test(section)) {
-  // this will redirect to '/news' if the section contains a number
+  for (const segment of segments){
+
+  // the '/^\d+$/' expression checks to see if it only has numbers in eaach segment
+    if (/^\d+$/.test(segment)) {
+  // this will redirect to '/news' if the section contains a number.
+  // window.location.href property in javascript will redirect the page to '/news' if the segment has only numbers. 
       window.location.href='/news';
   // return stops from continuing to check the code. 
       return;
